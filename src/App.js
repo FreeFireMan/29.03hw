@@ -22,7 +22,7 @@ const url = 'https://jsonplaceholder.typicode.com/';
 function App() {
 
     const [state, setState] = useState([]);
-    const [button, setBtn] = useState('');
+    const [button, setBtn] = useState('posts');
 
     useEffect(() => {
         fetch(`${url}${button}`)
