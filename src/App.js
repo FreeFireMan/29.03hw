@@ -32,7 +32,7 @@ function App() {
         setBtn(btn);
         const response = await fetch(`${url}${btn}`);
         const data = await response.json();
-        setState(data)
+        setState(data);
     }
 
     useEffect(() => {
@@ -43,12 +43,12 @@ function App() {
 
     return (
     <div className="App">
-      <button onClick={() => fetchJPH('posts')}>posts</button>
-      <button onClick={() => fetchJPH('comments')}>comments</button>
-      <button onClick={() => fetchJPH('albums')}>albums</button>
-      <button onClick={() => fetchJPH('photos')}>photos</button>
-      <button onClick={() => fetchJPH('todos')}>todos</button>
-      <button onClick={() => fetchJPH('users')}>users</button>
+        <button onClick={() => fetchJPH('posts')}>posts</button>
+        <button onClick={() => fetchJPH('comments')}>comments</button>
+        <button onClick={() => fetchJPH('albums')}>albums</button>
+        <button onClick={() => fetchJPH('photos')}>photos</button>
+        <button onClick={() => fetchJPH('todos')}>todos</button>
+        <button onClick={() => fetchJPH('users')}>users</button>
 
         { state.map(value =>
             <Posts userId={value.userId}  id={value.id} title={value.title} body={value.body} key={value.id} />
