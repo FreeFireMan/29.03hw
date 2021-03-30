@@ -20,30 +20,24 @@ import Components from "./components/Components";
 const url = 'https://jsonplaceholder.typicode.com/';
 
 function App() {
+
     const [state, setState] = useState([]);
     const [button, setBtn] = useState('');
 
-    const fetchJPH = async (btn) => {
-        setBtn(btn);
-        const response = await fetch(`${url}${btn}`);
-        const data = await response.json();
-        setState(data);
-    }
-
     useEffect(() => {
-        return () => {
-            setState([]);
-        };
+        fetch(`${url}${button}`)
+            .then(res => res.json())
+            .then(data=>setState(data))
     }, [button]);
 
     return (
     <div className="App">
-        <button onClick={() => fetchJPH('posts')}>posts</button>
-        <button onClick={() => fetchJPH('comments')}>comments</button>
-        <button onClick={() => fetchJPH('albums')}>albums</button>
-        <button onClick={() => fetchJPH('photos')}>photos</button>
-        <button onClick={() => fetchJPH('todos')}>todos</button>
-        <button onClick={() => fetchJPH('users')}>users</button>
+        <button onClick={() => setBtn('posts')}>posts</button>
+        <button onClick={() => setBtn('comments')}>comments</button>
+        <button onClick={() => setBtn('albums')}>albums</button>
+        <button onClick={() => setBtn('photos')}>photos</button>
+        <button onClick={() => setBtn('todos')}>todos</button>
+        <button onClick={() => setBtn('users')}>users</button>
 
         <Components state={state} button={button} />
     </div>
