@@ -1,11 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Posts from "./components/Posts";
-import Comments from './components/Comments';
-import Albums from "./components/Albums";
-import Photos from "./components/Photos";
-import Todos from "./components/Todos";
-import Users from "./components/Users";
+import Components from "./components/Components";
 
 /* https://jsonplaceholder.typicode.com/
 ендпоінти:
@@ -26,7 +21,7 @@ const url = 'https://jsonplaceholder.typicode.com/';
 
 function App() {
     const [state, setState] = useState([]);
-    const [btn, setBtn] = useState('');
+    const [button, setBtn] = useState('');
 
     const fetchJPH = async (btn) => {
         setBtn(btn);
@@ -39,7 +34,7 @@ function App() {
         return () => {
             setState([]);
         };
-    }, [btn]);
+    }, [button]);
 
     return (
     <div className="App">
@@ -50,29 +45,7 @@ function App() {
         <button onClick={() => fetchJPH('todos')}>todos</button>
         <button onClick={() => fetchJPH('users')}>users</button>
 
-        { state.map(value =>
-            <Posts userId={value.userId}  id={value.id} title={value.title} body={value.body} key={value.id} />
-        )}
-
-        { state.map(value =>
-            <Comments postId={value.postId} id={value.id} name={value.name} email={value.email} body={value.body} key={value.id} />
-        )}
-
-        {state.map(value =>
-            <Albums userId={value.userId}  id={value.id} title={value.title} key={value.id} />
-        )}
-
-        {state.map(value =>
-            <Photos albumId={value.albumId} id={value.id} title={value.title} url={value.url} thumbnailUrl={value.thumbnailUrl} key={value.id}/>
-        )}
-
-        {state.map(value =>
-            <Todos userId={value.userId}  id={value.id} title={value.title} completed={value.completed} key={value.id} />
-        )}
-
-        {state.map(value =>
-            <Users id={value.id} name={value.name} username={value.username} email={value.email} key={value.id} />
-        )}
+        <Components state={state} />
     </div>
   );
 }
