@@ -45,7 +45,7 @@ function App() {
         <button onClick={() => fetchJPH('todos')}>todos</button>
         <button onClick={() => fetchJPH('users')}>users</button>
 
-        <Components state={state} />
+        <Components state={state} button={button} />
     </div>
   );
 }

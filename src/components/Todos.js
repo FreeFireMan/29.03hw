@@ -5,7 +5,7 @@ function Todos(props) {
         <div>
             userId: {props.userId} - id: {props.id}
             <h3>title: {props.title}</h3>
-            <p>completed: {props.completed}</p>
+            <p>completed: {JSON.stringify(props.completed)}</p>
             <hr />
         </div>
     );
